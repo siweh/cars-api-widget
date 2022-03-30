@@ -14,7 +14,7 @@ async function getAllCars(){
     console.log(showingCars);
     let cars = showingCars.data;
     console.log(cars);
-    let carsDisplay = cars.slice(0, 4);
+    let carsDisplay = cars.slice(0, 30);
     console.log(carsDisplay);
         carsElem.innerHTML = theTemplate({
             showCarsAvailable: carsDisplay

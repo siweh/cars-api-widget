@@ -1,5 +1,5 @@
 table, td, th {  
-    border: 1px solid #ddd;
+    border: 1px solid black;
     text-align: left;
   }
   
@@ -9,4 +9,14 @@ table, td, th {
   
   th, td {
     padding: 8px;
+  }
+
+body{
+    background-color: #EAC143;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    align-content:flex-end;
   }
