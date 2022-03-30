@@ -50,7 +50,12 @@ async function filterByColorAndBrand() {
 //        }
 //    })
    let filteredCarsByColorAndBrand = cars.data.filter((car) => {
-        return car.color === color && car.make === make;
+
+        if (make !== 'all' && color !== 'all') {
+            return car.color === color && car.make === make;
+        }else {
+            return car.color === color || car.make === make;
+        }
    });
    console.log(filteredCarsByColorAndBrand);
    showFilteredResults.innerHTML = theTemplate({
