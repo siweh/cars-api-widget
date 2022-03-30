@@ -26,6 +26,17 @@
           {{#each ListOfColors}}
           <li>{{this}}</li>
           {{/each}}
+          <table>
+            {{#each filteredCars}}
+            <tr>
+                <td>{{make}}</td>
+                <td>{{model}}</td>
+                <td>{{color}}</td>
+                <td>R{{price}}</td>
+                <td>{{reg_number}}</td>
+            </tr>
+            {{/each}}
+         </table>
     </script>
     <title>Create API</title>
   </head>
@@ -59,29 +70,35 @@
         </div>
       </div>
       <div class="row">
+          <h2>Show filtered Cars</h2>
           <div class="col-5">
             <label for='car'>Choose a car brand:</label>
             <select name='carBrand' class='carBrand'>
               <option name='carAll' value='all'>Select brand</option>
-              <option name='car1' value='1'>Volkswagen</option>
-              <option name='car2' value='2'>Toyota</option>
-              <option name='car3' value='3'>Nissan</option>
-              <option name='car4' value='4'>Ford</option>
+              <option name='car1' value='Volkswagen'>Volkswagen</option>
+              <option name='car2' value='Toyota'>Toyota</option>
+              <option name='car3' value='Nissan'>Nissan</option>
+              <option name='car4' value='Ford'>Ford</option>
             </select>
           </div>
           <div class="col-5">
             <label for='car'>Choose a car color:</label>
             <select name='carColor' class='carColor'>
               <option name='carAll' value='all'>Select color</option>
-              <option name='color1' value='1'>Blue</option>
-              <option name='color2' value='2'>Red</option>
-              <option name='color3' value='3'>Orange</option>
-              <option name='color4' value='4'>White</option>
-              <option name='color5' value='5'>Grey</option>
+              <option name='color1' value='Blue'>Blue</option>
+              <option name='color2' value='Red'>Red</option>
+              <option name='color3' value='Orange'>Orange</option>
+              <option name='color4' value='White'>White</option>
+              <option name='color5' value='Grey'>Grey</option>
             </select>
           </div>
           <div class="col-2">
               <button type="button" class="analyze">Add</button>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-12">
+              <span class="filteredResults"></span>
           </div>
       </div>
     </div>
