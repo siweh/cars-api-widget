@@ -19,6 +19,7 @@ async function getAllCars(){
         carsElem.innerHTML = theTemplate({
             showCarsAvailable: carsDisplay
         });
+    return carsDisplay;
 }
 
 async function getAllMakeCars(){
@@ -26,7 +27,7 @@ async function getAllMakeCars(){
     
     carMakesElem.innerHTML = theTemplate({
         ListOfCars: showingCars.data
-    })
+    });
 }
 
 async function getListOfColors(){
@@ -39,25 +40,20 @@ async function getListOfColors(){
 
 async function filterByColorAndBrand() {
    let color = carColor.value;
-   console.log(color);
+   //console.log(color);
    let make = carBrand.value;
-   console.log(make);
+   //console.log(make);
    let cars = await axios.get("http://api-tutor.herokuapp.com/v1/cars");
     console.log(cars.data);
-//    let results = cars.data.map(car => {
-//        if(car === colors && car === brand){
-//          return car;
-//        }
-//    })
    let filteredCarsByColorAndBrand = cars.data.filter((car) => {
-
+        //?Check if dropdown is not equal to undefined
         if (make !== 'all' && color !== 'all') {
             return car.color === color && car.make === make;
         }else {
             return car.color === color || car.make === make;
         }
    });
-   console.log(filteredCarsByColorAndBrand);
+   //console.log(filteredCarsByColorAndBrand);
    showFilteredResults.innerHTML = theTemplate({
        filteredCars: filteredCarsByColorAndBrand
    });
@@ -67,6 +63,5 @@ async function filterByColorAndBrand() {
 getAllCars();
 getAllMakeCars();
 getListOfColors();
-//await filterByColorAndBrand();
 
 analyzeBtn.addEventListener('click', filterByColorAndBrand)
