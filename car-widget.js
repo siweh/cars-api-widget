@@ -10,7 +10,7 @@ let hbsDisplay = document.querySelector('.apiList').innerHTML;
 var theTemplate = Handlebars.compile(hbsDisplay);
 
 async function getAllCars(){
-    let showingCars = await axios.get("http://api-tutor.herokuapp.com/v1/cars");
+    let showingCars = await axios.get("https://api-tutor.herokuapp.com/v1/cars");
     console.log(showingCars);
     let cars = showingCars.data;
     console.log(cars);
@@ -31,7 +31,7 @@ async function getAllMakeCars(){
 }
 
 async function getListOfColors(){
-    let showingColors = await axios.get("http://api-tutor.herokuapp.com/v1/colors");
+    let showingColors = await axios.get("https://api-tutor.herokuapp.com/v1/colors");
     //console.log(showingColors.data);
     colorsElem.innerHTML = theTemplate({
         ListOfColors: showingColors.data
@@ -43,7 +43,7 @@ async function filterByColorAndBrand() {
    //console.log(color);
    let make = carBrand.value;
    //console.log(make);
-   let cars = await axios.get("http://api-tutor.herokuapp.com/v1/cars");
+   let cars = await axios.get("https://api-tutor.herokuapp.com/v1/cars");
     console.log(cars.data);
    let filteredCarsByColorAndBrand = cars.data.filter((car) => {
         //?Check if dropdown is not equal to undefined
