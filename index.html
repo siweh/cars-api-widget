@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="./styles/simple-grid-min.css" />
     <link rel="stylesheet" href="./styles/styles.css" />
     <script type="text/x-template" class="apiList">
+      {{errors}}
       <table>
+        <tr>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Color</th>
+          <th>Price</th>
+          <th>Reg_number</th>
+        </tr>
              {{#each showCarsAvailable}}
               <tr>
                   <td>{{make}}</td>
@@ -19,15 +27,7 @@
                   <td>{{reg_number}}</td>
               </tr>
               {{/each}}
-      </table>
-          {{#each ListOfCars}}
-            <li>{{this}}</li>
-          {{/each}}
-          {{#each ListOfColors}}
-          <li>{{this}}</li>
-          {{/each}}
-          <table>
-            {{#each filteredCars}}
+              {{#each filteredCars}}
             <tr>
                 <td>{{make}}</td>
                 <td>{{model}}</td>
@@ -36,13 +36,56 @@
                 <td>{{reg_number}}</td>
             </tr>
             {{/each}}
-         </table>
+      </table>
+      {{#each ListOfCars}}
+        <li>{{this}}</li>
+      {{/each}}
+        {{#each ListOfColors}}
+          <li>{{this}}</li>
+        {{/each}}
     </script>
     <title>Create API</title>
   </head>
   <body>
     <div class="container">
-      <h1 style="text-align: center;"><strong> My first api widget</strong></h1>
+      <h1 style="text-align: center"><strong> My first api widget</strong></h1>
+      <div class="row">
+        <div class="col-12">
+          <span class="errorMsg"></span>
+        </div>
+      </div>
+      <div class="row">
+        <h2>Show filtered Cars</h2>
+        <div class="col-5">
+          <label for="car">Choose a car brand:</label>
+          <select name="carBrand" class="carBrand">
+            <option name="carAll" value="all">Select brand</option>
+            <option name="car1" value="Volkswagen">Volkswagen</option>
+            <option name="car2" value="Toyota">Toyota</option>
+            <option name="car3" value="Nissan">Nissan</option>
+            <option name="car4" value="Ford">Ford</option>
+          </select>
+        </div>
+        <div class="col-5">
+          <label for="car">Choose a car color:</label>
+          <select name="carColor" class="carColor">
+            <option name="carAll" value="all">Select color</option>
+            <option name="color1" value="Blue">Blue</option>
+            <option name="color2" value="Red">Red</option>
+            <option name="color3" value="Orange">Orange</option>
+            <option name="color4" value="White">White</option>
+            <option name="color5" value="Grey">Grey</option>
+          </select>
+        </div>
+        <div class="col-2">
+          <button type="button" class="analyze">Filter</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <span class="filteredResults"></span>
+        </div>
+      </div>
       <div class="row">
         <div class="col-6">
           <h2>Showing Car Colors</h2>
@@ -57,49 +100,17 @@
         <div class="col-12">
           <h2>Showing all the available cars</h2>
           <span class="showCars">
-              <table>
-                <tr>
-                    <th>Car make</th>
-                    <th>Car model</th>
-                    <th>Color</th>
-                    <th>Price</th>
-                    <th>reg_number</th>
-                </tr>
-              </table> 
-            </span>
+            <table>
+              <tr>
+                <th>Car make</th>
+                <th>Car model</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>reg_number</th>
+              </tr>
+            </table>
+          </span>
         </div>
-      </div>
-      <div class="row">
-          <h2>Show filtered Cars</h2>
-          <div class="col-5">
-            <label for='car'>Choose a car brand:</label>
-            <select name='carBrand' class='carBrand'>
-              <option name='carAll' value='all'>Select brand</option>
-              <option name='car1' value='Volkswagen'>Volkswagen</option>
-              <option name='car2' value='Toyota'>Toyota</option>
-              <option name='car3' value='Nissan'>Nissan</option>
-              <option name='car4' value='Ford'>Ford</option>
-            </select>
-          </div>
-          <div class="col-5">
-            <label for='car'>Choose a car color:</label>
-            <select name='carColor' class='carColor'>
-              <option name='carAll' value='all'>Select color</option>
-              <option name='color1' value='Blue'>Blue</option>
-              <option name='color2' value='Red'>Red</option>
-              <option name='color3' value='Orange'>Orange</option>
-              <option name='color4' value='White'>White</option>
-              <option name='color5' value='Grey'>Grey</option>
-            </select>
-          </div>
-          <div class="col-2">
-              <button type="button" class="analyze">Filter</button>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-12">
-              <span class="filteredResults"></span>
-          </div>
       </div>
     </div>
   </body>

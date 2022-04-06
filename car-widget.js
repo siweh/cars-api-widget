@@ -4,10 +4,13 @@ let colorsElem = document.querySelector('.listOfColors');
 let carColor = document.querySelector('.carColor');
 let carBrand = document.querySelector('.carBrand');
 let analyzeBtn = document.querySelector('.analyze');
+let errorMsg = document.querySelector('.errorMsg');
 let showFilteredResults = document.querySelector('.filteredResults');
+// let listOfMakesAndColors = document.querySelector('.listOfColorsAndMakes').innerHTML;
 let hbsDisplay = document.querySelector('.apiList').innerHTML;
 
 var theTemplate = Handlebars.compile(hbsDisplay);
+// let listTemplate = Handlebars.compile(listOfMakesAndColors);
 
 async function getAllCars(){
     let showingCars = await axios.get("https://api-tutor.herokuapp.com/v1/cars");
@@ -53,6 +56,10 @@ async function filterByColorAndBrand() {
             return car.color === color || car.make === make;
         }
    });
+   if(color === 'all' && make === 'all'){
+       errorMsg.innerHTML = theTemplate({
+           errors: 'Please choose color and make of car'});
+   }
    //console.log(filteredCarsByColorAndBrand);
    showFilteredResults.innerHTML = theTemplate({
        filteredCars: filteredCarsByColorAndBrand

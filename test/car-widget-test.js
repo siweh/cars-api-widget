@@ -1,5 +1,5 @@
 describe('Car widgets', function(){
-    it('should return all the makes of car', function(){
+    it('should return all the available cars', function(){
         assert.deepEqual([{make: 'Nissan', model: 'Juke', color: 'Orange', price: 70532, reg_number: 'CJ 34237'},
         {make: 'Ford', model: 'Ranger', color: 'Red', price: 53993, reg_number: 'CJ 30043'},
         {make: 'Volkswagen', model: 'Polo', color: 'Orange', price: 83231, reg_number: 'CJ 20777'},
@@ -29,6 +29,9 @@ describe('Car widgets', function(){
         {make: 'Volkswagen', model: 'Touran', color: 'Red', price: 120855, reg_number: 'CA 8438'},
         {make: 'Toyota', model: 'Tazz', color: 'Blue', price: 126990, reg_number: 'CA 94801'},
         {make: 'Volkswagen', model: 'Golf', color: 'Orange', price: 134378, reg_number: 'CF 25628'}
-        ], getAllCars())
+        ], getAllCars());
     });
-})
+    it('Should return all the make of cars', function(){
+        assert.deepEqual([{make:'Volkswagen', make: 'Toyota', make: 'Nissan', make: 'Ford'}], getAllMakeCars());
+    });
+});

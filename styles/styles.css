@@ -20,3 +20,7 @@ body{
     display: inline-block;
     align-content:flex-end;
   }
+
+.errorMsg{
+  color: red;
+}
