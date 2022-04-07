@@ -8,8 +8,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <link rel="stylesheet" href="./styles/simple-grid-min.css" />
     <link rel="stylesheet" href="./styles/styles.css" />
+
+    <script type="text/x-template" class="listOfColorsAndMakes">
+      {{#each ListOfCars}}
+        <li>{{this}}</li>
+      {{/each}}
+        {{#each ListOfColors}}
+          <li>{{this}}</li>
+        {{/each}}
+        {{errors}}
+    </script>
     <script type="text/x-template" class="apiList">
-      {{errors}}
       <table>
         <tr>
           <th>Make</th>
@@ -37,12 +46,7 @@
             </tr>
             {{/each}}
       </table>
-      {{#each ListOfCars}}
-        <li>{{this}}</li>
-      {{/each}}
-        {{#each ListOfColors}}
-          <li>{{this}}</li>
-        {{/each}}
+      
     </script>
     <title>Create API</title>
   </head>

@@ -6,11 +6,11 @@ let carBrand = document.querySelector('.carBrand');
 let analyzeBtn = document.querySelector('.analyze');
 let errorMsg = document.querySelector('.errorMsg');
 let showFilteredResults = document.querySelector('.filteredResults');
-// let listOfMakesAndColors = document.querySelector('.listOfColorsAndMakes').innerHTML;
+let listOfMakesAndColors = document.querySelector('.listOfColorsAndMakes').innerHTML;
 let hbsDisplay = document.querySelector('.apiList').innerHTML;
 
 var theTemplate = Handlebars.compile(hbsDisplay);
-// let listTemplate = Handlebars.compile(listOfMakesAndColors);
+let listTemplate = Handlebars.compile(listOfMakesAndColors);
 
 async function getAllCars(){
     let showingCars = await axios.get("https://api-tutor.herokuapp.com/v1/cars");
@@ -28,7 +28,7 @@ async function getAllCars(){
 async function getAllMakeCars(){
     let showingCars = await axios.get("https://api-tutor.herokuapp.com/v1/makes");
     
-    carMakesElem.innerHTML = theTemplate({
+    carMakesElem.innerHTML = listTemplate({
         ListOfCars: showingCars.data
     });
 }
@@ -36,7 +36,7 @@ async function getAllMakeCars(){
 async function getListOfColors(){
     let showingColors = await axios.get("https://api-tutor.herokuapp.com/v1/colors");
     //console.log(showingColors.data);
-    colorsElem.innerHTML = theTemplate({
+    colorsElem.innerHTML = listTemplate({
         ListOfColors: showingColors.data
     })
 }
@@ -57,9 +57,13 @@ async function filterByColorAndBrand() {
         }
    });
    if(color === 'all' && make === 'all'){
-       errorMsg.innerHTML = theTemplate({
+       errorMsg.innerHTML = listTemplate({
            errors: 'Please choose color and make of car'});
    }
+
+   setTimeout(() => {
+    document.querySelector('.errorMsg').innerHTML = '';
+  }, 3000);
    //console.log(filteredCarsByColorAndBrand);
    showFilteredResults.innerHTML = theTemplate({
        filteredCars: filteredCarsByColorAndBrand
